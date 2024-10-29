@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LogoHeader from "../assets/LogoHeader.svg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -56,20 +57,20 @@ const Login = () => {
         className="flex items-center p-4 mb-6 cursor-pointer"
         onClick={() => navigate(-1)}
       >
-        <a className="text-2xl text-gray-500">{"<"} </a>
-        <a className="ml-2 text-base font-medium">Volver</a>
+        <a className="text-2xl text-[#1D2E50]">{"<"} </a>
+        <a className="ml-2 text-base font-medium text-[#1D2E50]">Volver</a>
       </div>
 
       {/* Título */}
       <div className="flex items-center ml-4 space-x-8">
-        <h1 className=" pl-5 text-[24px] text-[#515151] font-medium">
+        <h1 className=" pl-5 text-[24px] text-[#1D2E50] font-medium">
           Bienvenido a
         </h1>
 
         <div className="flex items-center">
-          <span className="text-[28px] text-gray-400">Mi</span>
+          <span className="text-[30px] font-medium text-[#4B81B4]">Mi</span>
           <img
-            src="logoheader.png"
+            src={LogoHeader}
             alt="Logo"
           />
         </div>
@@ -82,7 +83,7 @@ const Login = () => {
         {/* DNI */}
         <div>
           <label
-            className="block text-[#515151] text-[1rem] font-medium mb-2"
+            className="block text-[#1D2E50] text-[1rem] font-medium mb-2"
             htmlFor="dni"
           >
             Ingresa tu DNI
@@ -94,7 +95,7 @@ const Login = () => {
             placeholder="DNI"
             value={formData.dni}
             onChange={handleChange}
-            className="w-full px-4 py-4 mt-2 border-b-2 border-gray-400 rounded-b-2xl outline-none transition-all duration-300 bg-white"
+            className="w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 bg-white"
           />
           <div className="h-5">
             {errors.dni && <p className="text-red-500 text-sm">{errors.dni}</p>}
@@ -104,7 +105,7 @@ const Login = () => {
         {/* Contraseña */}
         <div>
           <label
-            className="text-[#515151] text-[1rem] font-medium mb-2"
+            className="text-[#1D2E50] text-[1rem] font-medium mb-2"
             htmlFor="password"
           >
             Ingresa tu contraseña
@@ -116,7 +117,7 @@ const Login = () => {
             placeholder="Contraseña"
             value={formData.password}
             onChange={handleChange}
-            className="w-full px-4 py-4 mt-2 border-b-2 border-gray-400 rounded-b-xl outline-none transition-all duration-300 bg-white"
+            className="w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-xl outline-none transition-all duration-300 bg-white"
           />
           <div className="h-5">
             {errors.password && (
@@ -132,19 +133,19 @@ const Login = () => {
         <div className="flex justify-between">
           <button
             type="button"
-            className="font-medium px-12 py-2 bg-white text-gray-600 border-2 border-gray-500 rounded-xl shadow-md hover:bg-gray-200 transition"
-            onClick={() => navigate("/register")} 
+            className="border-b-[3px] font-medium px-12 py-2 bg-white text-gray-600 border-2 border-gray-500 rounded-xl shadow-md hover:bg-gray-200 transition"
+            onClick={() => navigate("/register")}
           >
             Registrarse
           </button>
           <button
             type="submit"
-            className="font-medium px-12 py-2 bg-[#515151] text-white rounded-xl shadow-md hover:bg-[#5D5D5D] transition"
+            className="font-medium px-12 py-2 bg-[#1D2E50] text-white rounded-xl shadow-md hover:bg-[#4B81B4] transition"
           >
             Ingresar
           </button>
         </div>
-        <span className="flex justify-end font-semibold">
+        <span className="flex justify-end font-semibold text-[#1D2E50]">
           ¿Olvidaste tu contraseña?
         </span>
       </form>

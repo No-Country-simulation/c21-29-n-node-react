@@ -1,67 +1,75 @@
-import { useState } from 'react';
+import { useState } from "react";
 import HeaderDP from "../components/DashboardPaciente/HeaderDP";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const FirstStep = () => {
   const navigate = useNavigate();
 
-  const [prevision, setPrevision] = useState('');
-  const [especialidad, setEspecialidad] = useState('');
-  const [mes, setMes] = useState('');
+  const [prevision, setPrevision] = useState("");
+  const [especialidad, setEspecialidad] = useState("");
+  const [mes, setMes] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    localStorage.setItem('prevision', prevision);
-    localStorage.setItem('especialidad', especialidad);
-    localStorage.setItem('mes', mes);
+    localStorage.setItem("prevision", prevision);
+    localStorage.setItem("especialidad", especialidad);
+    localStorage.setItem("mes", mes);
 
-    navigate('/secondstep');
+    navigate("/secondstep");
   };
 
   return (
     <>
       <HeaderDP />
-      <div className="flex flex-col mx-auto mt-8 h-screen items-center w-[476px] shadow-2xl">
-        <div className="flex items-center justify-center w-[359px] max-w-xl mx-auto">
+      <div className="font-abc flex flex-col mx-auto mt-8 h-screen items-center w-[476px] rounded-xl shadow-[0px_10px_30px_rgba(0,0,0,0.4)] mb-14 ">
+        <div className="flex items-center justify-center w-[359px] max-w-xl mx-auto pt-10 ">
           {/* Paso 1 - Activo */}
           <div className="flex items-center">
-            <div className="w-10 h-10 bg-[#515151] rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">1</span>
+            <div className="w-10 h-10 bg-[#1D2E50] rounded-full flex items-center justify-center">
+              <span className="text-white font-normal">1</span>
             </div>
-            <div className="w-24 h-1 bg-[#515151]"></div>
+            <div className="w-14 h-1 bg-[#1D2E50]"></div>
           </div>
 
           {/* Paso 2 */}
           <div className="flex items-center">
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">2</span>
+            <div className="w-10 h-10 bg-[#4B81B4] rounded-full flex items-center justify-center">
+              <span className="text-white font-normal">2</span>
             </div>
-            <div className="w-24 h-1 bg-gray-300"></div>
+            <div className="w-14 h-1 bg-[#4B81B4]"></div>
           </div>
 
           {/* Paso 3 */}
           <div className="flex items-center">
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">3</span>
+            <div className="w-10 h-10 bg-[#4B81B4] rounded-full flex items-center justify-center">
+              <span className="text-white font-normal">3</span>
             </div>
-            <div className="w-24 h-1 bg-gray-300"></div>
+            <div className="w-14 h-1 bg-[#4B81B4]"></div>
           </div>
 
           {/* Paso 4 */}
           <div className="flex items-center">
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">4</span>
+            <div className="w-10 h-10 bg-[#4B81B4] rounded-full flex items-center justify-center">
+              <span className="text-white font-normal">4</span>
             </div>
           </div>
         </div>
 
-        <h1 className="text-[24px] font-medium font-abc text-center mt-16">Reserva Telemedicina</h1>
+        <h1 className="text-[24px] font-medium font-abc text-center mt-16 text-[#1D2E50] pb-10">
+          Reserva Telemedicina
+        </h1>
 
-        <form onSubmit={handleSubmit} className="w-[476px] bg-white p-6 rounded shadow-md">
+        <form
+          onSubmit={handleSubmit}
+          className="w-[476px] bg-white p-6 rounded shadow-md "
+        >
           {/* Previsión */}
           <div className="mb-4">
-            <label htmlFor="prevision" className="block text-xl font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="prevision"
+              className="block text-[16px] font-normal text-[#1D2E50] mb-2 size-4 leading-[18.75px]"
+            >
               Previsión
             </label>
             <select
@@ -71,15 +79,34 @@ const FirstStep = () => {
               onChange={(e) => setPrevision(e.target.value)} // Actualiza el estado al cambiar
               required
             >
-              <option value="" disabled>Seleccionar Previsión</option>
-              <option value="Prevision1">Previsión 1</option>
-              <option value="Prevision2">Previsión 2</option>
+              <option
+                value=""
+                disabled
+                className="text-[15px] text-[#818181]"
+              >
+                Seleccionar Previsión
+              </option>
+              <option
+                value="Prevision1"
+                className="text-[15px] text-[#818181]"
+              >
+                Previsión 1
+              </option>
+              <option
+                value="Prevision2"
+                className="text-[15px] text-[#818181]"
+              >
+                Previsión 2
+              </option>
             </select>
           </div>
 
           {/* Especialidad */}
           <div className="mb-4">
-            <label htmlFor="especialidad" className="block text-xl font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="especialidad"
+              className="block text-[16px] font-normal text-[#1D2E50] mb-2 size-4 leading-[18.75px] mt-10"
+            >
               Especialidad
             </label>
             <select
@@ -89,52 +116,137 @@ const FirstStep = () => {
               onChange={(e) => setEspecialidad(e.target.value)} // Actualiza el estado al cambiar
               required
             >
-              <option value="" disabled>Seleccionar Especialidad</option>
-              <option value="Dermatología">Dermatologia</option>
-              <option value="Cardiología">Cardiología</option>
+              <option
+                value=""
+                disabled
+                className="text-[15px] text-[#818181]"
+              >
+                Seleccionar Especialidad
+              </option>
+              <option
+                value="Dermatología"
+                className="text-[15px] text-[#818181]"
+              >
+                Dermatologia
+              </option>
+              <option
+                value="Cardiología"
+                className="text-[15px] text-[#818181]"
+              >
+                Cardiología
+              </option>
             </select>
           </div>
 
           {/* Mes */}
           <div className="mb-6">
-            <label htmlFor="mes" className="block text-xl font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="mes"
+              className="block text-[16px] font-normal text-[#1D2E50] mb-2 size-4 leading-[18.75px] mt-10"
+            >
               Mes
             </label>
             <select
               id="mes"
               className="w-full px-4 py-4 mt-2 border-b-2 border-gray-400 rounded-b-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={mes}
-              onChange={(e) => setMes(e.target.value)} 
+              onChange={(e) => setMes(e.target.value)}
               required
             >
-              <option value="" disabled>Seleccionar Mes</option>
-              <option value="Enero">Enero</option>
-              <option value="Febrero">Febrero</option>
-              <option value="Marzo">Marzo</option>
-              <option value="Abril">Abril</option>
-              <option value="Mayo">Mayo</option>
-              <option value="Junio">Junio</option>
-              <option value="Julio">Julio</option>
-              <option value="Agosto">Agosto</option>
-              <option value="Setiembre">Setiembre</option>
-              <option value="Octubre">Octubre</option>
-              <option value="Noviembre">Noviembre</option>
-              <option value="Diciembre">Diciembre</option>
+              <option
+                value=""
+                disabled
+                className="text-[15px] text-[#818181]"
+              >
+                Seleccionar Mes
+              </option>
+              <option
+                value="Enero"
+                className="text-[15px] text-[#818181]"
+              >
+                Enero
+              </option>
+              <option
+                value="Febrero"
+                className="text-[15px] text-[#818181]"
+              >
+                Febrero
+              </option>
+              <option
+                value="Marzo"
+                className="text-[15px] text-[#818181]"
+              >
+                Marzo
+              </option>
+              <option
+                value="Abril"
+                className="text-[15px] text-[#818181]"
+              >
+                Abril
+              </option>
+              <option
+                value="Mayo"
+                className="text-[15px] text-[#818181]"
+              >
+                Mayo
+              </option>
+              <option
+                value="Junio"
+                className="text-[15px] text-[#818181]"
+              >
+                Junio
+              </option>
+              <option
+                value="Julio"
+                className="text-[15px] text-[#818181]"
+              >
+                Julio
+              </option>
+              <option
+                value="Agosto"
+                className="text-[15px] text-[#818181]"
+              >
+                Agosto
+              </option>
+              <option
+                value="Setiembre"
+                className="text-[15px] text-[#818181]"
+              >
+                Setiembre
+              </option>
+              <option
+                value="Octubre"
+                className="text-[15px] text-[#818181]"
+              >
+                Octubre
+              </option>
+              <option
+                value="Noviembre"
+                className="text-[15px] text-[#818181]"
+              >
+                Noviembre
+              </option>
+              <option
+                value="Diciembre"
+                className="text-[15px] text-[#818181]"
+              >
+                Diciembre
+              </option>
             </select>
           </div>
 
           {/* Botón y enlace */}
           <div className="flex justify-between items-center mt-16">
             <div
-              className="text-gray-700 font-medium text-[26px] cursor-pointer flex items-center"
+              className="text-gray-700 font-medium text-[20px] leading-7 cursor-pointer flex items-center"
               onClick={() => navigate(-1)}
             >
-              <a className="mr-1 text-[34px] text-gray-700">&lt;</a>
+              <a className="mr-2 text-[20px] text-gray-700">&lt;</a>
               Volver
             </div>
             <button
               type="submit"
-              className="bg-[#515151] text-white text-[20px] px-8 py-2 font-medium rounded-xl hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400"
+              className="bg-[#1D2E50] text-white text-[20px] px-8 py-2 font-normal rounded-xl hover:bg-[#4B81B4] focus:outline-none focus:ring-2 focus:ring-gray-400"
             >
               Buscar hora
             </button>

@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSignOutAlt,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import DashboardMain from "../../pages/DashboardMain";
+import CerrarSesion from "../../assets/Cerrarsesion.svg";
 
 const SidePanel = () => {
   const [selectedItem, setSelectedItem] = useState(0);
@@ -25,6 +23,7 @@ const SidePanel = () => {
   const handleLogout = () => {
     setIsModalOpen(false);
     navigate("/");
+    window.scrollTo(0, 0); // Esto hace que la página se desplace hacia arriba al cerrar sesión
   };
 
   const renderContent = () => {
@@ -73,7 +72,7 @@ const SidePanel = () => {
   return (
     <div className="flex">
       {/* Panel lateral */}
-      <div className="w-80 h-[822px] font-abc bg-white text-[#515151] font-medium flex flex-col justify-between p-6">
+      <div className="w-80 h-[822px] font-abc bg-white text-[#1D2E50] font-medium flex flex-col justify-between p-6">
         <div>
           <h2 className="text-2xl ml-2 font-medium mb-8">Menú</h2>
 
@@ -83,7 +82,9 @@ const SidePanel = () => {
               <li
                 key={index}
                 className={`flex justify-between rounded-2xl items-center cursor-pointer p-2 ${
-                  selectedItem === index ? "bg-gray-400" : "bg-transparent"
+                  selectedItem === index
+                    ? "bg-[#4B81B4] text-white"
+                    : "bg-transparent"
                 } hover:bg-gray-300`}
                 onClick={() => setSelectedItem(index)}
               >
@@ -97,10 +98,13 @@ const SidePanel = () => {
         {/* Botón de Cerrar Sesión */}
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex justify-between items-center bg-[#515151] hover:bg-red-700 text-white p-3 rounded-md"
+          className="flex justify-between items-center hover:bg-[#4B81B4] text-[#1D2E50] p-3 rounded-md"
         >
           <span>Cerrar Sesión</span>
-          <FontAwesomeIcon icon={faSignOutAlt} />
+          <img
+            src={CerrarSesion}
+            alt="Icono de Cerrar Sesion"
+          />
         </button>
       </div>
 
