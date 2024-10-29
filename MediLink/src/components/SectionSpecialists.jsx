@@ -6,15 +6,15 @@ const SectionSpecialists = () => {
       <div className="bg-white shadow-[0_5px_10px_rgba(0,0,0,0.25)] rounded-xl flex w-[1340px] h-[397px]">
         {/* Sección izquierda: Texto y botón */}
         <div className="flex flex-col justify-center p-8 w-1/2 ">
-          <h3 className="pl-10 text-[24px] leading-[32px] font-medium text-[#515151] mb-4">
+          <h3 className="pl-10 text-[24px] leading-[32px] font-medium text-[#1D2E50] mb-4">
             Te invitamos a conocer a nuestros <br /> especialistas
           </h3>
-          <p className="pl-10 text-[20px] text-[#515151] leading-[28px] mb-10 ">
+          <p className="pl-10 text-[20px] text-[#1D2E50] leading-[28px] mb-10 ">
             Un equipo de trabajo multidisciplinario que te <br /> entrega
             alternativas de atención y tratamientos <br /> para diversas
             patologías.
           </p>
-          <button className="ml-10 font-medium px-12 py-3 bg-[#515151] text-white rounded-xl shadow-md hover:bg-[#5D5D5D] transition self-start">
+          <button className="ml-10 font-medium px-12 py-3 bg-[#1D2E50] text-white rounded-xl shadow-md hover:bg-[#4B81B4] transition self-start">
             Conocer más
           </button>
         </div>
