@@ -129,15 +129,15 @@ const SecondStep = () => {
 
         <div className="flex justify-between w-full mt-4 p-16">
           <div
-            className="text-gray-700 font-medium text-[26px] cursor-pointer"
+            className="text-[#1D2E50] font-medium text-[26px] cursor-pointer"
             onClick={() => navigate(-1)}
           >
-            <a className="mr-1 text-[34px] text-gray-700">&lt;</a>
+            <a className="mr-1 text-[34px] text-[#1D2E50]">&lt;</a>
             Volver
           </div>
           <button
             type="button"
-            className="bg-[#515151] text-white text-[20px] px-8 py-2 font-medium rounded-xl hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="bg-[#1D2E50] text-white text-[20px] px-8 py-2 font-medium rounded-xl hover:bg-blue-950 focus:outline-none focus:ring-2 focus:ring-gray-400"
             onClick={handleReserve}
           >
             Reservar
