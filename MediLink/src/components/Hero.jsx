@@ -1,7 +1,21 @@
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Hero = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duración de la animación en milisegundos
+      once: true, // Solo animar una vez, no en scroll de regreso
+    });
+  }, []);
+  
   return (
-    <div className=" mx-auto rounded-xl mt-12 mb-20  font-abc w-[1340px] h-[458px] flex justify-around items-center shadow-[0_5px_10px_rgba(0,0,0,0.25)]">
-      <div className="ml-24  flex flex-col justify-center items-start">
+    <div className=" mx-auto rounded-xl mt-12 mb-20 font-abc w-[1340px] h-[458px] flex justify-around items-center shadow-[0_5px_10px_rgba(0,0,0,0.25)]">
+      <div 
+        className="ml-24 flex flex-col justify-center items-start"
+        data-aos="fade-right" // Anima desde la izquierda hacia la derecha
+      >
         <h2 className="text-[34px] w-[500px] text-[#1D2E50]">
           Realiza hoy tus examenes <br />
           preventivos
@@ -14,11 +28,14 @@ const Hero = () => {
         </button>
       </div>
 
-      <div className="flex justify-center items-center">
+      <div 
+        className="flex justify-center items-center"
+        data-aos="fade-left" // Anima desde la derecha hacia la izquierda
+      >
         <img
           className="ml-6 rounded-xl"
           src="hero.png"
-          alt=""
+          alt="Hero Image"
         />
       </div>
     </div>
