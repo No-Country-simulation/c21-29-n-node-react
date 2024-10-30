@@ -27,6 +27,11 @@ const ProximasCitas = () => {
     };
 
     const handleConfirm = () => {
+        const updatedCitas = citas.map((cita, index) =>
+            index === selectedCitaIndex ? { ...cita, estado: 'confirmado' } : cita
+        );
+        setCitas(updatedCitas);
+        localStorage.setItem("citas", JSON.stringify(updatedCitas)); 
         toast.success(`Cita confirmada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`); // Notificación de confirmación
         handleModalClose();
     };
@@ -66,13 +71,15 @@ const ProximasCitas = () => {
                                     <td className="px-4 py-2 flex gap-2">
                                         <button
                                             onClick={() => handleConfirmClick(index)}
-                                            className="bg-[#4B81B4] text-white transition-all px-5 py-2 rounded-xl hover:bg-blue-950"
+                                            className={`bg-[#4B81B4] text-white transition-all px-5 py-2 rounded-xl hover:bg-blue-950 ${cita.estado === 'confirmado' ? 'disabled:opacity-50 cursor-not-allowed' : ''}`}
+                                            disabled={cita.estado === 'confirmado'}
                                         >
                                             Confirmar
                                         </button>
                                         <button
                                             onClick={() => handleCancelClick(index)}
-                                            className="bg-white text-[#4B81B4] border-2 border-[#4B81B4] px-5 py-2 transition-all rounded-xl hover:bg-blue-300 hover:text-red-600"
+                                            className={`bg-white text-[#4B81B4] border-2 border-[#4B81B4] px-5 py-2 transition-all rounded-xl hover:bg-blue-300 hover:text-red-600 ${cita.estado === 'anulado' ? 'disabled:opacity-50 cursor-not-allowed' : ''}`}
+                                            disabled={cita.estado === 'anulado'}
                                         >
                                             Anular
                                         </button>
