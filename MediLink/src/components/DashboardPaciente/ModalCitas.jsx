@@ -1,5 +1,4 @@
 
-
 const ModalCitas = ({ isOpen, onClose, onConfirm, type }) => {
     if (!isOpen) return null;
 
@@ -17,13 +16,13 @@ const ModalCitas = ({ isOpen, onClose, onConfirm, type }) => {
                 <div className="flex justify-around mt-6">
                     <button 
                         onClick={onConfirm} 
-                        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700"
+                        className="bg-[#4B81B4] text-white px-4 py-2 rounded-xl transition-all hover:bg-blue-950"
                     >
                         {type === 'confirm' ? 'Sí, Confirmar' : 'Sí, Anular'}
                     </button>
                     <button 
                         onClick={onClose} 
-                        className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                        className="bg-[#4B81B4] text-[#FFFFFF] px-4 py-2 rounded-xl transition-all hover:bg-blue-900"
                     >
                         Cancelar
                     </button>

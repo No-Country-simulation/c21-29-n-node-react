@@ -1,5 +1,6 @@
+import { toast } from 'react-toastify'; // Importamos la función 'toast'
 import { useState } from 'react';
-import ModalCitas from './ModalCitas'; 
+import ModalCitas from './ModalCitas';
 
 const ProximasCitas = () => {
     const initialCitas = JSON.parse(localStorage.getItem("citas")) || [];
@@ -26,7 +27,7 @@ const ProximasCitas = () => {
     };
 
     const handleConfirm = () => {
-        alert(`Cita confirmada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`);
+        toast.success(`Cita confirmada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`); // Notificación de confirmación
         handleModalClose();
     };
 
@@ -34,7 +35,7 @@ const ProximasCitas = () => {
         const updatedCitas = citas.filter((_, index) => index !== selectedCitaIndex);
         setCitas(updatedCitas);
         localStorage.setItem("citas", JSON.stringify(updatedCitas)); 
-        alert(`Cita anulada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`);
+        toast.error(`Cita anulada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`); // Notificación de cancelación
         handleModalClose();
     };
 
@@ -44,7 +45,7 @@ const ProximasCitas = () => {
             <div className="mt-8 overflow-x-auto">
                 <table className="min-w-full">
                     <thead>
-                        <tr className="bg-gray-100 text-[#4B81B4] font-medium text-[16px] ">
+                        <tr className="bg-gray-100 text-[#4B81B4] font-medium text-[16px]">
                             <th className="px-4 py-2 text-start">Fecha cita / Hora</th>
                             <th className="px-4 py-2 text-start">Especialidad</th>
                             <th className="px-4 py-2 text-start">Especialista</th>
@@ -71,7 +72,7 @@ const ProximasCitas = () => {
                                         </button>
                                         <button
                                             onClick={() => handleCancelClick(index)}
-                                            className="bg-white text-[#4B81B4] border-2 border-[#4B81B4]  px-5 py-2 transition-all rounded-xl hover:bg-blue-300 hover:text-red-600"
+                                            className="bg-white text-[#4B81B4] border-2 border-[#4B81B4] px-5 py-2 transition-all rounded-xl hover:bg-blue-300 hover:text-red-600"
                                         >
                                             Anular
                                         </button>

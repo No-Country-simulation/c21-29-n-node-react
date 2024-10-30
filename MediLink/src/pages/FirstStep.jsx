@@ -22,7 +22,7 @@ const FirstStep = () => {
   return (
     <>
       <HeaderDP />
-      <div className="font-abc flex flex-col mx-auto mt-8 h-screen items-center w-[476px] rounded-xl shadow-[0px_10px_30px_rgba(0,0,0,0.4)] mb-14 ">
+      <div className="font-abc flex flex-col mx-auto mt-8 h-auto items-center w-[476px] rounded-xl shadow-[0px_10px_30px_rgba(0,0,0,0.4)] mb-14 ">
         <div className="flex items-center justify-center w-[359px] max-w-xl mx-auto pt-10 ">
           {/* Paso 1 - Activo */}
           <div className="flex items-center">
@@ -74,7 +74,7 @@ const FirstStep = () => {
             </label>
             <select
               id="prevision"
-              className="w-full px-4 py-4 mt-2 border-b-2 border-gray-400 rounded-b-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-4 mt-2 border-b-2 border-gray-400 text-[#1D2E50] rounded-b-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={prevision}
               onChange={(e) => setPrevision(e.target.value)} // Actualiza el estado al cambiar
               required
@@ -82,19 +82,19 @@ const FirstStep = () => {
               <option
                 value=""
                 disabled
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Seleccionar Previsión
               </option>
               <option
                 value="Prevision1"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Previsión 1
               </option>
               <option
                 value="Prevision2"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Previsión 2
               </option>
@@ -111,7 +111,7 @@ const FirstStep = () => {
             </label>
             <select
               id="especialidad"
-              className="w-full px-4 py-4 mt-2 border-b-2 border-gray-400 rounded-b-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-4 mt-2 border-b-2 text-[#1D2E50] border-gray-400 rounded-b-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={especialidad}
               onChange={(e) => setEspecialidad(e.target.value)} // Actualiza el estado al cambiar
               required
@@ -119,19 +119,19 @@ const FirstStep = () => {
               <option
                 value=""
                 disabled
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Seleccionar Especialidad
               </option>
               <option
                 value="Dermatología"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Dermatologia
               </option>
               <option
                 value="Cardiología"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Cardiología
               </option>
@@ -148,7 +148,7 @@ const FirstStep = () => {
             </label>
             <select
               id="mes"
-              className="w-full px-4 py-4 mt-2 border-b-2 border-gray-400 rounded-b-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-4 mt-2 border-b-2 text-[#1D2E50] border-gray-400 rounded-b-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={mes}
               onChange={(e) => setMes(e.target.value)}
               required
@@ -156,79 +156,79 @@ const FirstStep = () => {
               <option
                 value=""
                 disabled
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Seleccionar Mes
               </option>
               <option
                 value="Enero"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Enero
               </option>
               <option
                 value="Febrero"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Febrero
               </option>
               <option
                 value="Marzo"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Marzo
               </option>
               <option
                 value="Abril"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Abril
               </option>
               <option
                 value="Mayo"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Mayo
               </option>
               <option
                 value="Junio"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Junio
               </option>
               <option
                 value="Julio"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Julio
               </option>
               <option
                 value="Agosto"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Agosto
               </option>
               <option
                 value="Setiembre"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Setiembre
               </option>
               <option
                 value="Octubre"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Octubre
               </option>
               <option
                 value="Noviembre"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Noviembre
               </option>
               <option
                 value="Diciembre"
-                className="text-[15px] text-[#818181]"
+                className="text-[15px] text-[#1D2E50]"
               >
                 Diciembre
               </option>
