@@ -45,7 +45,7 @@ const ProximasCitas = () => {
             <div className="mt-8 overflow-x-auto">
                 <table className="min-w-full">
                     <thead>
-                        <tr className="bg-gray-100 text-[#4B81B4] font-medium text-[16px]">
+                        <tr className="bg-[#DDE6EB] text-[#4B81B4] font-medium text-[16px]">
                             <th className="px-4 py-2 text-start">Fecha cita / Hora</th>
                             <th className="px-4 py-2 text-start">Especialidad</th>
                             <th className="px-4 py-2 text-start">Especialista</th>
@@ -53,10 +53,10 @@ const ProximasCitas = () => {
                             <th className="px-4 py-2 text-start">Estado</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="bg-[#DDE6EB]">
                         {citas.length > 0 ? (
                             citas.map((cita, index) => (
-                                <tr key={index} className="hover:bg-gray-50 font-medium text-[#1D2E50]">
+                                <tr key={index} className="font-medium text-[#1D2E50]">
                                     <td className="px-4 py-2">
                                         {cita.fecha} / {cita.hora}
                                     </td>

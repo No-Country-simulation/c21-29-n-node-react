@@ -18,7 +18,7 @@ const ModalCitas = ({ isOpen, onClose, onConfirm, type }) => {
                         onClick={onConfirm} 
                         className="bg-[#4B81B4] text-white px-4 py-2 rounded-xl transition-all hover:bg-blue-950"
                     >
-                        {type === 'confirm' ? 'Sí, Confirmar' : 'Sí, Anular'}
+                        {type === 'confirm' ? 'Sí, confirmar' : 'Sí, anular'}
                     </button>
                     <button 
                         onClick={onClose} 
