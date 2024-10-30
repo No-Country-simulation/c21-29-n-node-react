@@ -1,0 +1,26 @@
+.react-calendar {
+    width: 445px !important; 
+    max-width: 100% !important;
+    border: none !important;
+    margin: 0 auto;
+}
+
+.react-calendar .react-calendar__navigation__label {
+    font-size: 1.5rem !important; /* Cambia el tamaño según tu preferencia */
+    font-weight: bold;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    font-size: 0.875rem !important; 
+    padding: 8px 0 !important;
+}
+
+.react-calendar__tile {
+    padding: 10px !important;
+    font-size: 0.875rem !important; 
+}
+
+.react-calendar__month-view__days__day {
+    width: 45px !important;
+    height: 45px !important;
+}
