@@ -57,8 +57,8 @@ const Login = () => {
         className="flex items-center p-4 mb-6 cursor-pointer"
         onClick={() => navigate(-1)}
       >
-        <a className="text-2xl text-[#1D2E50]">{"<"} </a>
-        <a className="ml-2 text-base font-medium text-[#1D2E50]">Volver</a>
+        <a className="text-4xl text-[#1D2E50]">{"<"} </a>
+        <a className="ml-2 text-2xl font-medium text-[#1D2E50]">Volver</a>
       </div>
 
       {/* Título */}

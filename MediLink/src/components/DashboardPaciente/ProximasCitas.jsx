@@ -1,5 +1,6 @@
+import { toast } from 'react-toastify'; // Importamos la función 'toast'
 import { useState } from 'react';
-import ModalCitas from './ModalCitas'; 
+import ModalCitas from './ModalCitas';
 
 const ProximasCitas = () => {
     const initialCitas = JSON.parse(localStorage.getItem("citas")) || [];
@@ -26,7 +27,12 @@ const ProximasCitas = () => {
     };
 
     const handleConfirm = () => {
-        alert(`Cita confirmada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`);
+        const updatedCitas = citas.map((cita, index) =>
+            index === selectedCitaIndex ? { ...cita, estado: 'confirmado' } : cita
+        );
+        setCitas(updatedCitas);
+        localStorage.setItem("citas", JSON.stringify(updatedCitas)); 
+        toast.success(`Cita confirmada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`); // Notificación de confirmación
         handleModalClose();
     };
 
@@ -34,7 +40,7 @@ const ProximasCitas = () => {
         const updatedCitas = citas.filter((_, index) => index !== selectedCitaIndex);
         setCitas(updatedCitas);
         localStorage.setItem("citas", JSON.stringify(updatedCitas)); 
-        alert(`Cita anulada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`);
+        toast.error(`Cita anulada para ${citas[selectedCitaIndex].fecha} a las ${citas[selectedCitaIndex].hora}`); // Notificación de cancelación
         handleModalClose();
     };
 
@@ -44,7 +50,7 @@ const ProximasCitas = () => {
             <div className="mt-8 overflow-x-auto">
                 <table className="min-w-full">
                     <thead>
-                        <tr className="bg-gray-100 text-[#4B81B4] font-medium text-[16px] ">
+                        <tr className="bg-[#DDE6EB] text-[#4B81B4] font-medium text-[16px]">
                             <th className="px-4 py-2 text-start">Fecha cita / Hora</th>
                             <th className="px-4 py-2 text-start">Especialidad</th>
                             <th className="px-4 py-2 text-start">Especialista</th>
@@ -52,10 +58,10 @@ const ProximasCitas = () => {
                             <th className="px-4 py-2 text-start">Estado</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="bg-[#DDE6EB]">
                         {citas.length > 0 ? (
                             citas.map((cita, index) => (
-                                <tr key={index} className="hover:bg-gray-50 font-medium text-[#1D2E50]">
+                                <tr key={index} className="font-medium text-[#1D2E50]">
                                     <td className="px-4 py-2">
                                         {cita.fecha} / {cita.hora}
                                     </td>
@@ -65,13 +71,15 @@ const ProximasCitas = () => {
                                     <td className="px-4 py-2 flex gap-2">
                                         <button
                                             onClick={() => handleConfirmClick(index)}
-                                            className="bg-[#4B81B4] text-white transition-all px-5 py-2 rounded-xl hover:bg-blue-950"
+                                            className={`bg-[#4B81B4] text-white transition-all px-5 py-2 rounded-xl hover:bg-blue-950 ${cita.estado === 'confirmado' ? 'disabled:opacity-50 cursor-not-allowed' : ''}`}
+                                            disabled={cita.estado === 'confirmado'}
                                         >
                                             Confirmar
                                         </button>
                                         <button
                                             onClick={() => handleCancelClick(index)}
-                                            className="bg-white text-[#4B81B4] border-2 border-[#4B81B4]  px-5 py-2 transition-all rounded-xl hover:bg-blue-300 hover:text-red-600"
+                                            className={`bg-white text-[#4B81B4] border-2 border-[#4B81B4] px-5 py-2 transition-all rounded-xl hover:bg-blue-300 hover:text-red-600 ${cita.estado === 'anulado' ? 'disabled:opacity-50 cursor-not-allowed' : ''}`}
+                                            disabled={cita.estado === 'anulado'}
                                         >
                                             Anular
                                         </button>
