@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LogoHeader from "../assets/LogoHeader.svg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -29,63 +28,16 @@ const Register = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Validar si el DNI ya está registrado en localStorage
-  const dniAlreadyExists = (dni) => {
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    return existingUsers.some((user) => user.dni === dni);
-  };
-
-  // Validar los campos del formulario
   const validateForm = () => {
     const newErrors = {};
-
-    // Validar campos vacíos
     for (const key in formData) {
       if (!formData[key]) {
         newErrors[key] = "Este campo es obligatorio";
       }
     }
-
-    // Validar que el DNI sea de 8 dígitos numéricos
-    if (!/^\d{8}$/.test(formData.dni)) {
-      newErrors.dni = "El DNI debe tener exactamente 8 números";
-    }
-
-    // Validar si el DNI ya está registrado
-    if (dniAlreadyExists(formData.dni)) {
-      newErrors.dni = "Este DNI ya está registrado";
-    }
-
-    // Validar que las contraseñas coincidan
     if (formData.password !== formData.repeatPassword) {
       newErrors.repeatPassword = "Las contraseñas no coinciden";
     }
-
-    // Validar el día
-    if (
-      formData.dia &&
-      (parseInt(formData.dia) < 1 || parseInt(formData.dia) > 31)
-    ) {
-      newErrors.dia = "Día inválido (debe ser entre 1 y 31)";
-    }
-
-    // Validar el mes
-    if (
-      formData.mes &&
-      (parseInt(formData.mes) < 1 || parseInt(formData.mes) > 12)
-    ) {
-      newErrors.mes = "Mes inválido (debe ser entre 1 y 12)";
-    }
-
-    // Validar el año
-    const currentYear = new Date().getFullYear();
-    if (
-      formData.ano &&
-      (parseInt(formData.ano) < 1900 || parseInt(formData.ano) > currentYear)
-    ) {
-      newErrors.ano = `Año inválido (debe estar entre 1900 y ${currentYear})`;
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -104,46 +56,37 @@ const Register = () => {
       localStorage.setItem("users", JSON.stringify(existingUsers));
 
       // Guardar el nombre completo para el saludo en el dashboard
-      localStorage.setItem(
-        "loggedUser",
-        JSON.stringify({ nombreCompleto: formData.nombreCompleto })
-      );
+      localStorage.setItem("loggedUser", JSON.stringify({ nombreCompleto: formData.nombreCompleto }));
+
 
       // Redirigir al dashboard
       navigate("/DashboardPaciente");
     }
   };
+  
 
   return (
-    <div className="mt-4 font-abc w-[474px] h-auto mx-auto bg-white p-6 rounded-xl shadow-[0px_10px_30px_rgba(0,0,0,0.4)]">
+    <div className="mt-4 font-abc w-[474px] h-[1118.33px] mx-auto bg-white p-6 rounded-xl shadow-[0px_10px_30px_rgba(0,0,0,0.4)]">
       {/* Flecha y Volver */}
       <div
         className="flex items-center p-4 mb-6 cursor-pointer"
         onClick={() => navigate(-1)}
       >
-        <a className="text-2xl text-[#1D2E50]">{"<"} </a>
-        <a className="ml-2 text-base font-medium text-[#1D2E50]">Volver</a>
+        <a className="text-4xl text-[#1D2E50]">{"<"} </a>
+        <a className="ml-2 text-2xl font-medium text-[#1D2E50]">Volver</a>
       </div>
 
       {/* Título */}
       <div className="flex items-center ml-4 space-x-8">
-        <h1 className="text-[24px]  pl-4 text-[#1D2E50] font-medium">
-          Crear cuenta
-        </h1>
+        <h1 className="text-[24px] text-[#1D2E50] font-medium">Crear cuenta</h1>
         <div className="flex items-center">
-          <span className="text-[30px] font-medium text-[#4B81B4]">Mi</span>
-          <img
-            src={LogoHeader}
-            alt="Logo"
-          />
+          <span className="text-[28px] font-medium text-[#4B81B4]">Mi</span>
+          <img src="logoheader.png" alt="Logo" />
         </div>
       </div>
 
       {/* Formulario */}
-      <form
-        className="space-y-6 p-4 mt-12"
-        onSubmit={handleSubmit}
-      >
+      <form className="space-y-6 p-4 mt-12" onSubmit={handleSubmit}>
         {/* DNI */}
         <div>
           <label
@@ -154,13 +97,14 @@ const Register = () => {
           </label>
           <input
             type="text"
+            minLength={6}
             id="dni"
             name="dni"
             placeholder="DNI"
             value={formData.dni}
             onChange={handleChange}
             className={`w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 
-              ${focusedInput === "dni" ? "bg-[#DDE6EB]" : "bg-white"}`}
+              ${focusedInput === "dni" ? "bg-green-200" : "bg-white"}`}
             onFocus={() => handleFocus("dni")}
           />
           <div className="h-5">
@@ -184,9 +128,7 @@ const Register = () => {
             value={formData.nombreCompleto}
             onChange={handleChange}
             className={`w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 
-              ${
-                focusedInput === "nombreCompleto" ? "bg-[#DDE6EB]" : "bg-white"
-              }`}
+              ${focusedInput === "nombreCompleto" ? "bg-green-200" : "bg-white"}`}
             onFocus={() => handleFocus("nombreCompleto")}
           />
           <div className="h-5">
@@ -210,7 +152,7 @@ const Register = () => {
               value={formData.dia}
               onChange={handleChange}
               className={`w-1/3 px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-xl outline-none transition-all duration-300 
-                ${focusedInput === "dia" ? "bg-[#DDE6EB]" : "bg-white"}`}
+                ${focusedInput === "dia" ? "bg-green-200" : "bg-white"}`}
               onFocus={() => handleFocus("dia")}
             />
             <input
@@ -221,7 +163,7 @@ const Register = () => {
               value={formData.mes}
               onChange={handleChange}
               className={`w-1/3 px-4 py-4 mt-2 border-b-2 rounded-b-xl border-[#1D2E50] outline-none transition-all duration-300 
-                ${focusedInput === "mes" ? "bg-[#DDE6EB]" : "bg-white"}`}
+                ${focusedInput === "mes" ? "bg-green-200" : "bg-white"}`}
               onFocus={() => handleFocus("mes")}
             />
             <input
@@ -232,34 +174,29 @@ const Register = () => {
               value={formData.ano}
               onChange={handleChange}
               className={`w-1/3 px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-xl outline-none transition-all duration-300 
-                ${focusedInput === "ano" ? "bg-[#DDE6EB]" : "bg-white"}`}
+                ${focusedInput === "ano" ? "bg-green-200" : "bg-white"}`}
               onFocus={() => handleFocus("ano")}
             />
           </div>
-          <div className="h-5">
-            {errors.dia && <p className="text-red-500 text-sm">{errors.dia}</p>}
-            {errors.mes && <p className="text-red-500 text-sm">{errors.mes}</p>}
-            {errors.ano && <p className="text-red-500 text-sm">{errors.ano}</p>}
-          </div>
         </div>
 
-        {/* Email */}
+        {/* Correo electrónico */}
         <div>
           <label
-            className="block text-[#1D2E50] text-[1rem] font-medium mb-2"
+            className="text-sm text-[#1D2E50] text-[1rem] font-medium mb-2"
             htmlFor="email"
           >
-            Ingresa tu email
+            Correo electrónico
           </label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder="Email"
+            placeholder="Correo electrónico"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 
-              ${focusedInput === "email" ? "bg-[#DDE6EB]" : "bg-white"}`}
+            className={`w-full px-4 py-4 mt-2 border-b-2 rounded-b-xl border-[#1D2E50] outline-none transition-all duration-300 
+              ${focusedInput === "email" ? "bg-green-200" : "bg-white"}`}
             onFocus={() => handleFocus("email")}
           />
           <div className="h-5">
@@ -269,23 +206,24 @@ const Register = () => {
           </div>
         </div>
 
-        {/* Contraseña */}
+        {/* Crear contraseña */}
         <div>
           <label
-            className="block text-[#1D2E50] text-[1rem] font-medium mb-2"
+            className="text-[#1D2E50] text-[1rem] text-sm font-medium mb-2"
             htmlFor="password"
           >
-            Crea tu contraseña
+            Crear contraseña
           </label>
           <input
             type="password"
+            minLength={5}
             id="password"
             name="password"
-            placeholder="Contraseña"
+            placeholder="Crear contraseña"
             value={formData.password}
             onChange={handleChange}
-            className={`w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 
-              ${focusedInput === "password" ? "bg-[#DDE6EB]" : "bg-white"}`}
+            className={`w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-xl outline-none transition-all duration-300 
+              ${focusedInput === "password" ? "bg-green-200" : "bg-white"}`}
             onFocus={() => handleFocus("password")}
           />
           <div className="h-5">
@@ -298,23 +236,24 @@ const Register = () => {
         {/* Repetir contraseña */}
         <div>
           <label
-            className="block text-[#1D2E50] text-[1rem] font-medium mb-2"
-            htmlFor="repeatPassword"
+            className="text-sm text-[#1D2E50] text-[1rem] font-medium mb-2"
+            htmlFor="repeat-password"
           >
-            Repite tu contraseña
+            Repetir contraseña
           </label>
           <input
             type="password"
-            id="repeatPassword"
+            minLength={5}
+            id="repeat-password"
             name="repeatPassword"
-            placeholder="Repite tu contraseña"
+            placeholder="Repetir contraseña"
             value={formData.repeatPassword}
             onChange={handleChange}
-            className={`w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 
+            className={`w-full px-4 py-4 mt-2 border-b-2 border-[#1D2E50] rounded-b-xl outline-none transition-all duration-300 
               ${
-                focusedInput === "repeatPassword" ? "bg-[#DDE6EB]" : "bg-white"
+                focusedInput === "repeat-password" ? "bg-green-200" : "bg-white"
               }`}
-            onFocus={() => handleFocus("repeatPassword")}
+            onFocus={() => handleFocus("repeat-password")}
           />
           <div className="h-5">
             {errors.repeatPassword && (
@@ -327,7 +266,7 @@ const Register = () => {
         <div className="flex justify-end mt-12">
           <button
             type="submit"
-            className="px-12 bg-[#1D2E50] text-2xl font-sm  text-white py-4 rounded-xl hover:bg-gray-600 transition duration-300 ease-in-out"
+            className="px-10 bg-[#1D2E50] text-2xl font-sm  text-white py-2 rounded-xl hover:bg-blue-950 transition duration-300 ease-in-out"
           >
             Crear Cuenta
           </button>

@@ -61,6 +61,12 @@ const SecondStep = () => {
     navigate("/thirdstep");
   };
 
+  // Función para deshabilitar sábados y domingos
+  const tileDisabled = ({ date }) => {
+    const day = date.getDay();
+    return day === 0 || day === 6; // 0 = Domingo, 6 = Sábado
+  };
+
   return (
     <>
       <HeaderDP />
@@ -110,6 +116,7 @@ const SecondStep = () => {
           <Calendar
             value={currentDate}
             onChange={setCurrentDate}
+            tileDisabled={tileDisabled} // Deshabilitar sábados y domingos
           />
         </div>
 
