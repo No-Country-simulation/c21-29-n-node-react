@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faChevronDown,
+} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import DashboardMain from "../../pages/DashboardMain";
@@ -89,62 +92,61 @@ const SidePanel = () => {
 
           {/* Items del Menú */}
           {/* Items del Menú */}
-<ul className="space-y-4 text-[20px]">
-  {menuItems.map((item, index) => (
-    <li key={index}>
-      <div
-        className={`flex justify-between transition-all rounded-2xl items-center cursor-pointer p-2 ${
-          selectedItem === index
-            ? "bg-[#4B81B4] text-[#1D2E50]"
-            : "bg-transparent"
-        } hover:bg-blue-200 hover:text-[#1D2E50]`}
-        onClick={() => {
-          if (index === 2) {
-            // Si se hace clic en "Citas"
-            setIsCitasOpen(!isCitasOpen ? "open" : false);
-          } else {
-            setSelectedItem(index);
-            setIsCitasOpen(false);
-          }
-        }}
-      >
-        <span>{item}</span>
-        {index === 2 ? (
-          <FontAwesomeIcon
-            icon={isCitasOpen ? faChevronDown : faChevronRight}
-          />
-        ) : (
-          <FontAwesomeIcon icon={faChevronRight} />
-        )}
-      </div>
+          <ul className="space-y-4 text-[20px]">
+            {menuItems.map((item, index) => (
+              <li key={index}>
+                <div
+                  className={`flex justify-between transition-all rounded-2xl items-center cursor-pointer p-2 ${
+                    selectedItem === index
+                      ? "bg-[#4B81B4] text-white"
+                      : "bg-transparent"
+                  } hover:bg-blue-200 hover:text-[#1D2E50]`}
+                  onClick={() => {
+                    if (index === 2) {
+                      // Si se hace clic en "Citas"
+                      setIsCitasOpen(!isCitasOpen ? "open" : false);
+                    } else {
+                      setSelectedItem(index);
+                      setIsCitasOpen(false);
+                    }
+                  }}
+                >
+                  <span>{item}</span>
+                  {index === 2 ? (
+                    <FontAwesomeIcon
+                      icon={isCitasOpen ? faChevronDown : faChevronRight}
+                    />
+                  ) : (
+                    <FontAwesomeIcon icon={faChevronRight} />
+                  )}
+                </div>
 
-      {/* Submenú de Citas */}
-      {index === 2 && isCitasOpen && (
-        <ul className="pl-6 mt-2 space-y-2">
-          <li
-            className="cursor-pointer hover:bg-blue-200 text-[14px] hover:text-[#1D2E50] p-2 rounded-xl"
-            onClick={() => {
-              setIsCitasOpen("proximas");
-              setSelectedItem(2);
-            }}
-          >
-            Próximas Citas
-          </li>
-          <li
-            className="cursor-pointer hover:bg-blue-200 text-[14px] hover:text-[#1D2E50] p-2 rounded-xl"
-            onClick={() => {
-              setIsCitasOpen("pasadas");
-              setSelectedItem(2);
-            }}
-          >
-            Citas Pasadas
-          </li>
-        </ul>
-      )}
-    </li>
-  ))}
-</ul>
-
+                {/* Submenú de Citas */}
+                {index === 2 && isCitasOpen && (
+                  <ul className="pl-6 mt-2 space-y-2">
+                    <li
+                      className="cursor-pointer hover:bg-blue-200 text-[14px] hover:text-[#1D2E50] p-2 rounded-xl"
+                      onClick={() => {
+                        setIsCitasOpen("proximas");
+                        setSelectedItem(2);
+                      }}
+                    >
+                      Próximas Citas
+                    </li>
+                    <li
+                      className="cursor-pointer hover:bg-blue-200 text-[14px] hover:text-[#1D2E50] p-2 rounded-xl"
+                      onClick={() => {
+                        setIsCitasOpen("pasadas");
+                        setSelectedItem(2);
+                      }}
+                    >
+                      Citas Pasadas
+                    </li>
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Botón de Cerrar Sesión */}
@@ -153,7 +155,10 @@ const SidePanel = () => {
           className="flex justify-between items-center hover:bg-[#4B81B4] text-[#1D2E50] p-3 rounded-md"
         >
           <span>Cerrar Sesión</span>
-          <img src={CerrarSesion} alt="Icono de Cerrar Sesion" />
+          <img
+            src={CerrarSesion}
+            alt="Icono de Cerrar Sesion"
+          />
         </button>
       </div>
 

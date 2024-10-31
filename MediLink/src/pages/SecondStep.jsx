@@ -120,6 +120,10 @@ const SecondStep = () => {
           />
         </div>
 
+        <h2 className="text-[20px] flex justify-start w-full mt-12 text-[#1D2E50] pl-14">
+          Especialistas disponibles
+        </h2>
+
         {especialidad === "Dermatología" && (
           <HoraEspecialistas
             selectedDate={currentDate}
@@ -134,12 +138,12 @@ const SecondStep = () => {
           />
         )}
 
-        <div className="flex justify-between w-full mt-4 p-16">
+        <div className="flex justify-between w-full mt-2 p-10 px-[55px]">
           <div
-            className="text-[#1D2E50] font-medium text-[26px] cursor-pointer"
+            className="text-[#1D2E50] font-medium text-[20px] cursor-pointer"
             onClick={() => navigate(-1)}
           >
-            <a className="mr-1 text-[34px] text-[#1D2E50]">&lt;</a>
+            <a className="mr-1 text-[20px] text-[#1D2E50]">&lt;</a>
             Volver
           </div>
           <button

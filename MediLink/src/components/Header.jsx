@@ -130,7 +130,7 @@ const Header = () => {
           </a>
           <a
             href="/login"
-            className="p-[10px] text-[20px] border-[3px] font-abc font-medium w-[174px] h-[53.54px] text-[#FFFFFF] border-[#1D2E50] bg-[#1D2E50] rounded-xl text-center hover:bg-[#4B81B4] transition"
+            className="p-[10px] text-[20px]  font-abc font-medium w-[174px] h-[53.54px] text-[#FFFFFF]  bg-[#1D2E50] rounded-xl text-center hover:bg-[#4B81B4] transition"
           >
             Ingresar
           </a>
