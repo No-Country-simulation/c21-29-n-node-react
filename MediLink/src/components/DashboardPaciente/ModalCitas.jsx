@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MdCheckCircle } from 'react-icons/md'; // Asegúrate de instalar react-icons si no lo has hecho.
+import { MdCheckCircle } from 'react-icons/md'; 
 
 const ModalCitas = ({ isOpen, onClose, onConfirm, type, onConfirmSuccess }) => {
     const [isConfirmed, setIsConfirmed] = useState(false);
@@ -9,7 +9,7 @@ const ModalCitas = ({ isOpen, onClose, onConfirm, type, onConfirmSuccess }) => {
     const handleConfirm = () => {
         setIsConfirmed(true);
         onConfirm();
-        onConfirmSuccess(); // Llama a la función para manejar el estado de confirmación
+        onConfirmSuccess(); 
     };
 
     return (
