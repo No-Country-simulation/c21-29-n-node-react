@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import LogoHeader from "../../assets/LogoHeader.svg";
 import Notificacion from "../../assets/Notificacion.svg";
 import Perfil from "../../assets/Perfil.svg";
+import { useNavigate } from "react-router-dom";
 
 const HeaderDP = () => {
   const [userName, setUserName] = useState("");
+
+  const navigate = useNavigate();
 
   // Función para obtener solo el primer nombre del usuario
   const updateUserName = () => {
@@ -43,6 +46,7 @@ const HeaderDP = () => {
         <img
           src={LogoHeader}
           alt="Logo"
+          onClick={() => navigate("/DashboardPaciente")}
         />
       </div>
 

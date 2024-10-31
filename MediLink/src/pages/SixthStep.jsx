@@ -68,7 +68,7 @@ const SixthStep = () => {
   return (
     <>
       <HeaderDP />
-      <div className="flex text-[#1D2E50] pt-10 justify-around m-auto items-center w-[1200px]  shadow-2xl">
+      <div className="flex text-[#1D2E50] pt-10 justify-around m-auto items-center w-[1200px] rounded-t-[20px] shadow-2xl">
         <div className="text-[#1D2E50] flex flex-col justify-center items-start ">
           <img
             src="webpay.png"
@@ -114,45 +114,48 @@ const SixthStep = () => {
           </div>
         </div>
 
-        <div className="mb-2">
-          <h4 className="text-[24px] font-medium">
+        <div className="mb-4 border-l-[1.5px] pl-12 border-[#1D2E50]">
+          <h4 className="text-center text-[24px] font-medium">
             Ingresar datos de la tarjeta
           </h4>
           {error && <p className="text-red-500">{error}</p>}
           <div className="mt-6 bg-[#DDE6EB] rounded-lg w-96 h-48 p-6 relative shadow-lg">
             <FaCreditCard
-              className="absolute top-4 left-4 text-black"
+              className="absolute top-4 left-4 text-[#1D2E50]"
               size={28}
             />
-            <div className="text-black text-xl font-bold mt-24">
+            <div className="text-[#1D2E50] text-xl font-bold mt-24">
               {cardNumber || "XXXX XXXX XXXX XXXX"}
             </div>
-            <div className="text-black text-base">{expiryDate || "MM/AA"}</div>
+            <div className="text-[#1D2E50] text-base">
+              {expiryDate || "MM/AA"}
+            </div>
           </div>
           <div className="mt-8">
-            <h5 className="text-[16px] font-normal">Número de Tarjeta</h5>
+            <h5 className="text-[15px] font-normal">Número de Tarjeta</h5>
             <input
               type="text"
               maxLength="19"
-              className="border border-gray-400 rounded-lg p-3 mt-2 w-full"
+              className="rounded-lg p-3 mt-2 w-full border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 bg-white"
               placeholder="XXXX XXXX XXXX XXXX"
               value={cardNumber}
               onChange={handleCardNumberChange}
               required
             />
-            <h5 className="text-[16px] font-normal mt-4">
+
+            <h5 className="text-[15px] font-normal mt-4">
               Fecha de Expiración
             </h5>
             <input
               type="text"
               maxLength="5"
-              className="border border-gray-400 rounded-lg p-3 mt-2 w-full"
+              className="rounded-lg p-3 mt-2 w-full border-b-2 border-[#1D2E50] rounded-b-2xl outline-none transition-all duration-300 bg-white"
               placeholder="MM/AA"
               value={expiryDate}
               onChange={handleExpiryDateChange}
               required
             />
-            <h5 className="text-[16px] font-normal mt-4">
+            <h5 className="text-[15px] font-normal mt-4">
               Código de verificación
             </h5>
             <input
@@ -167,12 +170,12 @@ const SixthStep = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-around items-center gap-96 mt-8">
+      <div className="border-b flex justify-around items-center gap-[650px] py-10 bg-white w-[1200px] rounded-b-[20px] shadow-xl m-auto">
         <div
-          className="text-[#1D2E50] font-medium text-[26px] cursor-pointer flex items-center"
+          className="text-[#1D2E50] font-medium text-[20px] cursor-pointer flex items-center"
           onClick={() => navigate(-1)}
         >
-          <a className="mr-2 text-[34px] text-[#1D2E50]">&lt;</a> Volver
+          <a className="mr-2 text-[24px] text-[#1D2E50]">&lt;</a> Volver
         </div>
         <button
           type="button"

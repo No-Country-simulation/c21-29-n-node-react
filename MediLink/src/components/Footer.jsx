@@ -2,8 +2,14 @@ import Logo from "../assets/LogoFooter.svg";
 import Instagram from "../assets/Instagram.svg";
 import X from "../assets/X.svg";
 import Facebook from "../assets/Facebook.svg";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const toMain = () => {
+    navigate("/");
+    window.scrollTo(0, 0);
+  };
   return (
     <footer className="bg-[#1D2E50] w-full font-abc mt-8">
       <div className="max-w-[1440px] h-[91px] mx-auto flex justify-around items-center px-4 ">
@@ -12,6 +18,7 @@ const Footer = () => {
           className="cursor-pointer"
           src={Logo}
           alt="logofooter"
+          onClick={toMain}
         />
         <ul className="flex mr-36 items-center space-x-4 text-[#DDE6EB]">
           <li className="text-[20px]">Acerca de este sitio:</li>
